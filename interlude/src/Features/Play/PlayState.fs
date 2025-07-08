@@ -17,6 +17,7 @@ type PlayState(info: LoadedChartInfo, pacemaker: PacemakerState, scoring: ScoreP
     let scoring_changed = scoring_changed_ev.Publish
     let first_note = info.WithMods.FirstNote
 
+    member this.ChartMeta = info.ChartMeta
     member this.Chart = info.Chart
     member this.WithColors = info.WithColors
     member this.Scoring = scoring

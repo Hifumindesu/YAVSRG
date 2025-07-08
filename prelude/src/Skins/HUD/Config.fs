@@ -22,6 +22,7 @@ type HudElement =
     | InputMeter
     | KeysPerSecond
     | CustomImage
+    | SongInfo
     static member FULL_LIST =
         [
             Accuracy
@@ -38,6 +39,7 @@ type HudElement =
             InputMeter
             KeysPerSecond
             CustomImage
+            SongInfo
         ]
 
 [<RequireQualifiedAccess>]
@@ -239,6 +241,9 @@ type HudConfig =
         CustomImageEnabled: bool
         CustomImagePosition: HudPosition
         CustomImageFrameTime: float32<ms / rate>
+
+        SongInfoEnabled: bool
+        SongInfoPosition: HudPosition
     }
     static member Default =
         {
@@ -467,6 +472,16 @@ type HudConfig =
                     Bottom = 400.0f, 0.0f
                 }
             CustomImageFrameTime = 200.0f<ms / rate>
+
+            SongInfoEnabled = false
+            SongInfoPosition =
+                {
+                    RelativeToPlayfield = true
+                    Left = -100.0f, 0.5f
+                    Top = 200.0f, 0.0f
+                    Right = 100.0f, 0.5f
+                    Bottom = 400.0f, 0.0f
+                }
         }
 
     member this.GetJudgementCounterDisplay(for_ruleset: Ruleset) : int option array =

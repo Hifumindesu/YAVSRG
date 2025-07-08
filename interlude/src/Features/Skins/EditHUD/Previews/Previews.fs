@@ -378,6 +378,12 @@ module SelectPreviews =
             Color.White.AsQuad
             (Sprite.pick_texture (1, 0) texture)
 
+    let private create_song_info (config: HudConfig) : SelectPreview =
+        None,
+        fun (bounds: Rect) ->
+            Text.fill (Style.font, "Song Title", bounds, Color.White, Alignment.CENTER)
+
+
     let create (config: HudConfig) (element: HudElement) : SelectPreview =
         match element with
         | HudElement.Accuracy -> create_accuracy config
@@ -394,3 +400,4 @@ module SelectPreviews =
         | HudElement.InputMeter -> create_input_meter config
         | HudElement.KeysPerSecond -> create_kps config
         | HudElement.CustomImage -> create_custom_image config
+        | HudElement.SongInfo -> create_song_info config
